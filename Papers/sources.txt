@@ -1,0 +1,2 @@
+http://www.rpscontest.com/
+	Hosts a RPS contest and shows best bots.
