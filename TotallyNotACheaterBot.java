@@ -17,13 +17,22 @@ public class TotallyNotACheaterBot implements RoShamBot {
 	public Action getNextMove(Action lastOpponentMove) {
 
 
-		// Let's implement (for starters) an algorithm which remembers the history of the current 
-		// game and can search back k steps (down to a limit search depth) - I've set up a method
-		// below.
+		// We should implement an algorithm switcher that, when it gets to the point that playing by 
+		// the current algorithm will let the opponent win if they guess correctly, we switch 
+		// algorithms to change it up so their algorithm stops being accurate.
 	}
 
-
-	public Action lookBack(Action lastOpponentMove) {
+	/** Returns move based on opponent's most likely move historically.
+	  *
+	  *	Parameters:
+	  * @param lastOpponentMove - Action - opponent's previous move
+	  * @param steps - int - number of previous steps to look back
+	  * @param maxLookBack - int - max number of historical moves to check
+	  *
+	  * Returns:
+	  * @return Action - move choice
+	  */
+	public Action lookBack(Action lastOpponentMove, int steps, int maxLookBack) {
 
 	}
 }
