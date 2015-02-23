@@ -1,2 +1,4 @@
 http://www.rpscontest.com/
 	Hosts a RPS contest and shows best bots.
+http://modelai.gettysburg.edu/2013/cfr/cfr.pdf
+	Describes a java implementation of regret minimization for RPS.
