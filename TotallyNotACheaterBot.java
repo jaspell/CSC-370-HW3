@@ -125,7 +125,7 @@ public class TotallyNotACheaterBot implements RoShamBot {
 		if (move == Action.ROCK) return Action.PAPER;
 		else if (move == Action.PAPER) return Action.SCISSORS;
 		else {
-			System.out.println("He's gonna do scissors this time, I promise.");
+			//System.out.println("He's gonna do scissors this time, I promise.");
 			return Action.ROCK;
 		}
 	}
