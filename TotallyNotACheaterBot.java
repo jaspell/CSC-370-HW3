@@ -32,7 +32,7 @@ public class TotallyNotACheaterBot implements RoShamBot {
 	  * Returns:
 	  * @return Action - move choice
 	  */
-	public Action lookBack(Action lastOpponentMove, int steps, int maxLookBack) {
+	public Action lookBack(int steps, int maxLookBack) {
 
 	}
 }
