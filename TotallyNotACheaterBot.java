@@ -1,5 +1,9 @@
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Collections;
 
 /** Ben and Jackson's Rock Paper Scissors player submission.
   *
@@ -14,6 +18,9 @@ public class TotallyNotACheaterBot implements RoShamBot {
 
 	List<Action> myHist;
 	List<Action> opHist;
+
+	private static final List<Action> MOVES = 
+		Collections.unmodifiableList(Arrays.asList(Action.values()));
 
 	/** Constructor for TotallyNotACheaterBot.
 	  *
@@ -38,10 +45,15 @@ public class TotallyNotACheaterBot implements RoShamBot {
 	  */
 	public Action getNextMove(Action lastOpponentMove) {
 
-		opHist.append(lastOpponentMove);
+		opHist.add(lastOpponentMove);
 
+		// Random randIntGen = new Random();
+		// Action myMove = MOVES.get(randIntGen.nextInt(3));
 
-		return Action.ROCK;
+		Action myMove = lookBack(4, 200);
+
+		myHist.add(myMove);
+		return myMove;
 	}
 
 	/** Returns move based on opponent's most likely move historically.
@@ -55,6 +67,6 @@ public class TotallyNotACheaterBot implements RoShamBot {
 	  */
 	public Action lookBack(int steps, int maxLookBack) {
 
-
+		return Action.ROCK;
 	}
 }
