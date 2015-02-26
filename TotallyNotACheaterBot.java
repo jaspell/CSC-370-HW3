@@ -1,4 +1,8 @@
-
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Collections;
 import java.util.*;
 
 /** Ben and Jackson's Rock Paper Scissors player submission.
@@ -68,7 +72,6 @@ public class TotallyNotACheaterBot implements RoShamBot {
 	  * @return Action - move choice
 	  */
 	public Action lookBack(int steps, int maxLookBack) {
-
 		List<Action> mostLikely = new ArrayList<Action>();
 
 		List<Action> recent;
