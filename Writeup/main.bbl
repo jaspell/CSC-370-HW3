@@ -1,16 +1,35 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\citeauthoryear{Koza}{1992}]{koza}
-Koza, J.~R.
-\newblock 1992.
-\newblock {\em Genetic Programming: On the Programming of Computers by Means of
-  Natural Selection}.
-\newblock Cambridge, MA, USA: MIT Press.
+\bibitem[\protect\citeauthoryear{Centurion}{2015}]{fig:puzzle}
+Centurion.
+\newblock 2015.
+\newblock Example state of an 8-puzzle.
+\newblock \url{http://centurion2.com/AIHomework/AI120/ai120.php}.
 
-\bibitem[\protect\citeauthoryear{Koza}{2003}]{fig:gpquadraticexample}
-Koza, J.~R.
+\bibitem[\protect\citeauthoryear{Hansson, Mayer, and
+  Yung}{1985}]{GeneratingAdmissableHeuristics}
+Hansson, O.; Mayer, A.~E.; and Yung, M.
+\newblock 1985.
+\newblock Generating admissible heuristics by criticizing solutions to relaxed
+  models.
+\newblock \url{http://academiccommons.columbia.edu/catalog/ac\%3A141289}.
+
+\bibitem[\protect\citeauthoryear{Johnson and Story}{1879}]{15notes}
+Johnson, W.~W., and Story, W.~E.
+\newblock 1879.
+\newblock {\em Notes on the" 15" puzzle}.
+
+\bibitem[\protect\citeauthoryear{Ratner and Warmuth}{1986}]{intractable}
+Ratner, D., and Warmuth, M.~K.
+\newblock 1986.
+\newblock Finding a shortest solution for the n$\times$ n extension of the
+  15-puzzle is intractable.
+\newblock In {\em AAAI},  168--172.
+
+\bibitem[\protect\citeauthoryear{Russell and Norvig}{2003}]{aima}
+Russell, S.~J., and Norvig, P.
 \newblock 2003.
-\newblock Example of a run of genetic programming.
-\newblock \url{http://www.genetic-programming.com/gpquadraticexample.html}.
+\newblock {\em {Artificial Intelligence: A Modern Approach}}.
+\newblock Pearson Education.
 
 \end{thebibliography}
