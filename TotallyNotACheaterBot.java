@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
+import java.util.*;
 
 /** Ben and Jackson's Rock Paper Scissors player submission.
   *
@@ -66,27 +67,39 @@ public class TotallyNotACheaterBot implements RoShamBot {
 	  * @return Action - move choice
 	  */
 	public Action lookBack(int steps, int maxLookBack) {
-		List<Action> seq = new ArrayList<Action>();
-		for(int i = opHist.size() - steps; i < opHist.size(); i++) {
-			seq.add(opHist.get(i));
-		}
-		int rock = 0;
-		int paper = 0;
-		int scissors = 0;
-		for(int i=opHist.size()-steps-1; i>=0 && i>=opHist.size()-steps-maxLookBack; i--) {
-			if(opHist.subList(i, i+steps).equals(seq)) {
-				Action a = opHist.get(i+steps);
-				if(a == Action.ROCK) rock++;
-				else if(a == Action.PAPER) paper++;
-				else scissors++;
+		if(steps < opHist.size()) {
+			List<Action> seq = new ArrayList<Action>();
+			for(int i = opHist.size() - steps; i < opHist.size(); i++) {
+				//System.out.println("Got here! i: " + i + " out of " + opHist.size());
+				seq.add(opHist.get(i));
 			}
-		}
-		if(rock > paper) {
-			if(rock > scissors) return Action.ROCK;
-			else return Action.SCISSORS;
+			//System.out.println("Got here! 1");
+			int rock = 0;
+			int paper = 0;
+			int scissors = 0;
+			for(int i=opHist.size()-steps-1; i>=0 && i>=opHist.size()-steps-maxLookBack; i--) {
+				//System.out.println("Got here! i: " + i);
+				if(opHist.subList(i, i+steps).equals(seq)) {
+					Action a = opHist.get(i+steps);
+					if(a == Action.ROCK) rock++;
+					else if(a == Action.PAPER) paper++;
+					else scissors++;
+				}
+			}
+			/*System.out.println("rock: " + rock);
+			System.out.println("paper: " + paper);
+			System.out.println("scissors: " + scissors);*/
+			//System.out.println("Got here! 2");
+			if(rock > paper) {
+				if(rock > scissors) return Action.ROCK;
+				else return Action.SCISSORS;
+			} else {
+				if(paper > scissors) return Action.PAPER;
+				else return Action.SCISSORS;
+			}
 		} else {
-			if(paper > scissors) return Action.PAPER;
-			else return Action.SCISSORS;
+			Random randIntGen = new Random();
+			return MOVES.get(randIntGen.nextInt(3));
 		}
 	}
 }
