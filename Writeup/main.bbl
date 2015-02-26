@@ -1,0 +1,16 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Koza}{1992}]{koza}
+Koza, J.~R.
+\newblock 1992.
+\newblock {\em Genetic Programming: On the Programming of Computers by Means of
+  Natural Selection}.
+\newblock Cambridge, MA, USA: MIT Press.
+
+\bibitem[\protect\citeauthoryear{Koza}{2003}]{fig:gpquadraticexample}
+Koza, J.~R.
+\newblock 2003.
+\newblock Example of a run of genetic programming.
+\newblock \url{http://www.genetic-programming.com/gpquadraticexample.html}.
+
+\end{thebibliography}
