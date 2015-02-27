@@ -1,35 +1,18 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\citeauthoryear{Centurion}{2015}]{fig:puzzle}
-Centurion.
+\bibitem[\protect\citeauthoryear{Neller and Lanctot}{2015}]{noregrets}
+Neller, T.~W., and Lanctot, M.
 \newblock 2015.
-\newblock Example state of an 8-puzzle.
-\newblock \url{http://centurion2.com/AIHomework/AI120/ai120.php}.
+\newblock An introduction to counterfactual regret minimization.
+\newblock \url{http://modelai.gettysburg.edu/2013/cfr/cfr.pdf }.
+\newblock [Online; posted 09-July-2013].
 
-\bibitem[\protect\citeauthoryear{Hansson, Mayer, and
-  Yung}{1985}]{GeneratingAdmissableHeuristics}
-Hansson, O.; Mayer, A.~E.; and Yung, M.
-\newblock 1985.
-\newblock Generating admissible heuristics by criticizing solutions to relaxed
-  models.
-\newblock \url{http://academiccommons.columbia.edu/catalog/ac\%3A141289}.
-
-\bibitem[\protect\citeauthoryear{Johnson and Story}{1879}]{15notes}
-Johnson, W.~W., and Story, W.~E.
-\newblock 1879.
-\newblock {\em Notes on the" 15" puzzle}.
-
-\bibitem[\protect\citeauthoryear{Ratner and Warmuth}{1986}]{intractable}
-Ratner, D., and Warmuth, M.~K.
-\newblock 1986.
-\newblock Finding a shortest solution for the n$\times$ n extension of the
-  15-puzzle is intractable.
-\newblock In {\em AAAI},  168--172.
-
-\bibitem[\protect\citeauthoryear{Russell and Norvig}{2003}]{aima}
-Russell, S.~J., and Norvig, P.
-\newblock 2003.
-\newblock {\em {Artificial Intelligence: A Modern Approach}}.
-\newblock Pearson Education.
+\bibitem[\protect\citeauthoryear{{Wikipedia user Enzoklop}}{2015}]{fig:rps}
+{Wikipedia user Enzoklop}.
+\newblock 2015.
+\newblock A chart showing how the three game elements of "rock-paper-scissors"
+  interact.
+\newblock
+  \url{http://en.wikipedia.org/wiki/Rock-paper-scissors#mediaviewer/File:Rock-paper-scissors.svg}.
 
 \end{thebibliography}

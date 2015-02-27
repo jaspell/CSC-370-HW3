@@ -3,46 +3,48 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: aaai.bst
 Database file #1: project1.bib
-Warning--empty publisher in 15notes
-You've used 5 entries,
+Warning--I didn't find a database entry for "aima"
+Warning--I didn't find a database entry for "GeneratingAdmissableHeuristics"
+Warning--I didn't find a database entry for "15notes"
+You've used 2 entries,
             2568 wiz_defined-function locations,
-            601 strings with 5311 characters,
-and the built_in function-call counts, 1769 in all, are:
-= -- 181
-> -- 64
-< -- 1
-+ -- 20
-- -- 20
-* -- 120
-:= -- 292
-add.period$ -- 24
-call.type$ -- 5
-change.case$ -- 28
-chr.to.int$ -- 5
-cite$ -- 6
-duplicate$ -- 73
-empty$ -- 139
-format.name$ -- 30
-if$ -- 371
+            589 strings with 5043 characters,
+and the built_in function-call counts, 616 in all, are:
+= -- 64
+> -- 20
+< -- 0
++ -- 8
+- -- 6
+* -- 34
+:= -- 109
+add.period$ -- 11
+call.type$ -- 2
+change.case$ -- 11
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 20
+empty$ -- 49
+format.name$ -- 9
+if$ -- 125
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 5
-newline$ -- 32
-num.names$ -- 15
-pop$ -- 42
+missing$ -- 0
+newline$ -- 16
+num.names$ -- 6
+pop$ -- 17
 preamble$ -- 1
-purify$ -- 35
+purify$ -- 13
 quote$ -- 0
-skip$ -- 62
+skip$ -- 21
 stack$ -- 0
-substring$ -- 57
-swap$ -- 19
-text.length$ -- 1
+substring$ -- 12
+swap$ -- 4
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 32
-warning$ -- 1
-while$ -- 13
-width$ -- 8
-write$ -- 66
-(There was 1 warning)
+type$ -- 16
+warning$ -- 0
+while$ -- 4
+width$ -- 3
+write$ -- 30
+(There were 3 warnings)
