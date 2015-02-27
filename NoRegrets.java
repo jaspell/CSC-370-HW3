@@ -25,7 +25,6 @@ public class NoRegrets implements RoShamBot {
 	// FOR ALL ARRAYS: 0 = Rock, 1 = Paper, 2 = Scissors
 	private List<Action> myHist;
 	private List<Action> opHist;
-	private Action last;
 	private int moves;
 
 
@@ -63,38 +62,58 @@ public class NoRegrets implements RoShamBot {
 
 		int myAction, otherAction;
 
-		for(int i = 0; i < 3; i++)
-			regretTotal[i] += actionUtility[i] - actionUtility[myAction];
+		for(int i = 0; i < 3; i++) 
+				regretTotal[i] = 0;
 
 		for(int i = (moves - TRACEBACK >= 0)? moves - TRACEBACK: 0; i <= moves; i++) {
 
 			myAction = 0;
 			otherAction = 0;
 
+			for(int i = 0; i < 3; i++) 
+				this.actionUtility[i] = 0;
+
 			if(this.myHist.get(i) == PAPER) myAction = 1;
 			else if(this.myHist.get(i) == SCISSORS) myAction = 2;
 			if(this.opHist.get(i) == PAPER) otherAction = 1;
-			else if(this.myHist.get(i) == SCISSORS) otherAction = 2;
+			else if(this.opHist.get(i) == SCISSORS) otherAction = 2;
 
-			actionUtility[otherAction] = 0;
-			actionUtility[otherAction == 2 ? 0 : otherAction + 1] = 1;
-			actionUtility[otherAction == 0 ? 2 : otherAction - 1] = -1;
+			//actionUtility[otherAction] += 0;
+			this.actionUtility[otherAction == 2 ? 0 : otherAction + 1] += 1;
+			this.actionUtility[otherAction == 0 ? 2 : otherAction - 1] += -1;
+
+			for(int j = 0; j < 3; j++)
+				this.regretTotal[j] += this.actionUtility[j] - this.actionUtility[myAction];
+		}
+
+		double regretSum = 0;
+
+		for(int i = 0; i < 3; i++) {
+			regretSum += this.regretTotal[i];
+		}
+
+		for(int i = 0; i < 3; i++) {
+			this.regretTotal[i] = this.regretTotal[i] / regretSum;
 		}
 
 		//get new strategy and return next move
-		this.updateStrategy();
+		//this.updateStrategy();
 		double d = Math.random();
 		double cumulativeProb = 0;
 		int i;
+		
 		for(i = 0; i < 2 && d >= cumulativeProb; i++)
-			cumulativeProb += this.myStrat[i];
+			cumulativeProb += this.regretTotal[i];
 		if(d < cumulativeProb) i--;
-		if(i == 0) this.last = Action.ROCK;
-		else if(i == 1) this.last = Action.PAPER;
-		else this.last = Action.SCISSORS;
 
-		this.myHist.add(last);
-		return last;
+		Action next;
+
+		if(i == 0) next = Action.ROCK;
+		else if(i == 1) next = Action.PAPER;
+		else next = Action.SCISSORS;
+
+		this.myHist.add(next);
+		return next;
 	}
 
 	/** Updates the bot's mixed strategy.
