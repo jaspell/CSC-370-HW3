@@ -18,7 +18,7 @@ public class NoRegrets implements RoShamBot {
 
 	private static final List<Action> MOVES = 
 		Collections.unmodifiableList(Arrays.asList(Action.values()));
-	private static final int TRACEBACK = 30;
+	private static final int TRACEBACK = 50;
 
 	private double[] regretTotal, strategyTotal;
 	private double[] myStrat, actionUtility;//, opStrat // these arrays persist but their values are continually reset.
@@ -44,8 +44,8 @@ public class NoRegrets implements RoShamBot {
 		//this.opStrat = { .3, .3, .3 };
 		this.myHist = new ArrayList<Action>();
 		this.opHist = new ArrayList<Action>();
-		this.moves = 0;
-		this.last = Action.ROCK;
+		this.moves = -1;
+		// this.last = Action.ROCK;
 	}
 
 	/** Returns the bot's next move.
@@ -62,21 +62,29 @@ public class NoRegrets implements RoShamBot {
 
 		int myAction, otherAction;
 
+		if(this.myHist.size() <= TRACEBACK) {
+			Action next = MOVES.get((int)(Math.random()*3));
+			this.myHist.add(next);
+			return next;
+		}
+
+		//System.out.println("Here");
+
 		for(int i = 0; i < 3; i++) 
 				regretTotal[i] = 0;
 
-		for(int i = (moves - TRACEBACK >= 0)? moves - TRACEBACK: 0; i <= moves; i++) {
+		for(int i = (moves - TRACEBACK >= 0)? moves - TRACEBACK: 0; i < moves; i++) {
 
 			myAction = 0;
 			otherAction = 0;
 
-			for(int i = 0; i < 3; i++) 
-				this.actionUtility[i] = 0;
+			for(int j = 0; j < 3; j++)
+				this.actionUtility[j] = 0;
 
-			if(this.myHist.get(i) == PAPER) myAction = 1;
-			else if(this.myHist.get(i) == SCISSORS) myAction = 2;
-			if(this.opHist.get(i) == PAPER) otherAction = 1;
-			else if(this.opHist.get(i) == SCISSORS) otherAction = 2;
+			if(this.myHist.get(i) == Action.PAPER) myAction = 1;
+			else if(this.myHist.get(i) == Action.SCISSORS) myAction = 2;
+			if(this.opHist.get(i) == Action.PAPER) otherAction = 1;
+			else if(this.opHist.get(i) == Action.SCISSORS) otherAction = 2;
 
 			//actionUtility[otherAction] += 0;
 			this.actionUtility[otherAction == 2 ? 0 : otherAction + 1] += 1;
@@ -101,7 +109,7 @@ public class NoRegrets implements RoShamBot {
 		double d = Math.random();
 		double cumulativeProb = 0;
 		int i;
-		
+
 		for(i = 0; i < 2 && d >= cumulativeProb; i++)
 			cumulativeProb += this.regretTotal[i];
 		if(d < cumulativeProb) i--;
@@ -139,8 +147,6 @@ public class NoRegrets implements RoShamBot {
 			this.strategyTotal[i] += this.myStrat[i];
 		}
 	}
-
-	private 
 
 	/** Updates the opponent's mixed strategy.
 	  *
