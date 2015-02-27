@@ -23,9 +23,10 @@ public class NoRegrets implements RoShamBot {
 	private double[] regretTotal, strategyTotal;
 	private double[] myStrat, actionUtility;//, opStrat // these arrays persist but their values are continually reset.
 	// FOR ALL ARRAYS: 0 = Rock, 1 = Paper, 2 = Scissors
-	//private List<Action> opHist;
+	private List<Action> myHist;
+	private List<Action> opHist;
 	private Action last;
-	//private int moves;
+	private int moves;
 
 
 	/** Constructor for NoRegrets.
@@ -42,9 +43,9 @@ public class NoRegrets implements RoShamBot {
 		this.myStrat = new double[3];
 		this.actionUtility = new double[3];
 		//this.opStrat = { .3, .3, .3 };
-		//this.myHist = new ArrayList<Action>();
-		//this.opHist = new ArrayList<Action>();
-		//moves = 0;
+		this.myHist = new ArrayList<Action>();
+		this.opHist = new ArrayList<Action>();
+		this.moves = 0;
 		this.last = Action.ROCK;
 	}
 
@@ -57,23 +58,28 @@ public class NoRegrets implements RoShamBot {
 	  * @return Action - the bot's move
 	  */
 	public Action getNextMove(Action lastOpponentMove) {
-		/*this.opHist.add(lastOpponentMove);
-		this.moves++;*/
+		this.opHist.add(lastOpponentMove);
+		this.moves++;
 
 		int myAction, otherAction;
-		//Rock is 0
-		if(this.last == PAPER) myAction = 1;
-		else if(this.last == SCISSORS) myAction = 2;
-		if(lastOpponentMove == PAPER) otherAction = 1;
-		else if(this.last == SCISSORS) otherAction = 2;
-
-		actionUtility[otherAction] = 0;
-		actionUtility[otherAction == 2 ? 0 : otherAction + 1] = 1;
-		actionUtility[otherAction == 0 ? 2 : otherAction - 1] = -1;
 
 		for(int i = 0; i < 3; i++)
 			regretTotal[i] += actionUtility[i] - actionUtility[myAction];
 
+		for(int i = (moves - TRACEBACK >= 0)? moves - TRACEBACK: 0; i <= moves; i++) {
+
+			myAction = 0;
+			otherAction = 0;
+
+			if(this.myHist.get(i) == PAPER) myAction = 1;
+			else if(this.myHist.get(i) == SCISSORS) myAction = 2;
+			if(this.opHist.get(i) == PAPER) otherAction = 1;
+			else if(this.myHist.get(i) == SCISSORS) otherAction = 2;
+
+			actionUtility[otherAction] = 0;
+			actionUtility[otherAction == 2 ? 0 : otherAction + 1] = 1;
+			actionUtility[otherAction == 0 ? 2 : otherAction - 1] = -1;
+		}
 
 		//get new strategy and return next move
 		this.updateStrategy();
@@ -86,6 +92,8 @@ public class NoRegrets implements RoShamBot {
 		if(i == 0) this.last = Action.ROCK;
 		else if(i == 1) this.last = Action.PAPER;
 		else this.last = Action.SCISSORS;
+
+		this.myHist.add(last);
 		return last;
 	}
 
@@ -112,6 +120,8 @@ public class NoRegrets implements RoShamBot {
 			this.strategyTotal[i] += this.myStrat[i];
 		}
 	}
+
+	private 
 
 	/** Updates the opponent's mixed strategy.
 	  *
