@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[\protect\citeauthoryear{Knoll}{2015}]{rpscomp}
+Knoll, B.
+\newblock 2015.
+\newblock Rock paper scissors programming competition.
+\newblock \url{http://www.rpscontest.com/leaderboard}.
+
 \bibitem[\protect\citeauthoryear{Neller and Lanctot}{2015}]{noregrets}
 Neller, T.~W., and Lanctot, M.
 \newblock 2015.

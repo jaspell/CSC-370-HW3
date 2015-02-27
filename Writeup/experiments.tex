@@ -2,7 +2,9 @@
 \section{Experiments}
 \label{sec:expts}
 
-We compare our algorithm against several algorithms produced by classmates by competing algorithms in pairs for $10000$ games.  
+We compare our algorithm against several algorithms produced by classmates by competing algorithms in pairs for $10$ rounds of $10000$ games against each opponent.  Algorithms are compared via their average performance, measured by the average margin of victory over the $10$ rounds in order to avoid chance performance fluctuations.
+
+Opponent algorithms can be grouped, based on general technique, into 6 categories.  Six algorithms use meta-strategies, which evaluate a number of approaches and choose the best anticipated approach.  2 algorithms use historical prediction, which looks back into the opponents history to check what the opponent played after similar preceding moves.  2 algorithms use frequency analysis to predict what the opponent will most likely play next.  3 algorithms simply use static mixed strategies, one uses reinforcement learning, and one chooses from a preset list of 3-move play sequences known as gambits.
 
 %In this section, you should describe your experimental setup. What
 %were the questions you were trying to answer? What was the

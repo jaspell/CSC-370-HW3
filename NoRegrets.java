@@ -18,7 +18,7 @@ public class NoRegrets implements RoShamBot {
 
 	private static final List<Action> MOVES = 
 		Collections.unmodifiableList(Arrays.asList(Action.values()));
-	private static final int TRACEBACK = 50;
+	private static final int TRACEBACK = 30;
 
 	private double[] regretTotal, strategyTotal;
 	private double[] myStrat, actionUtility;//, opStrat // these arrays persist but their values are continually reset.
@@ -43,6 +43,7 @@ public class NoRegrets implements RoShamBot {
 		this.actionUtility = new double[3];
 		//this.opStrat = { .3, .3, .3 };
 		this.myHist = new ArrayList<Action>();
+		this.myHist.add(Action.ROCK);
 		this.opHist = new ArrayList<Action>();
 		this.moves = -1;
 		// this.last = Action.ROCK;
@@ -121,6 +122,12 @@ public class NoRegrets implements RoShamBot {
 		else next = Action.SCISSORS;
 
 		this.myHist.add(next);
+
+
+        // System.out.println(this.myHist);
+        //for(int i = 0; i < this.myHist.size())
+        // System.out.println(this.opHist);
+
 		return next;
 	}
 

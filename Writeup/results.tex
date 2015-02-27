@@ -2,7 +2,48 @@
 \section{Results}
 \label{sec:results}
 
-The regret-minimization algorithm described in this paper consistently wins against algorithms employing fixed mixed strategies and, as expected, consistently ties with an algorithm playing the Nash equilibrium.
+\begin{table*}[ht]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline \hline % draws two horizontal lines at the top of the table
+    Algorithm & Margin of Victory\\
+    \hline % line after the column headers
+    M1& $-777.8$\\
+    M2& $-893.7$\\
+    M3& $-1082.4$\\
+    M4& $-1521.0$\\
+    M5& $-1821.6$\\
+    M6& $-2702.4$\\
+    \hline
+    H1& $-2147.3$\\
+    H2& $-2859.9$\\
+    \hline
+    F1& $285.8$\\
+    F2& $271.8$\\
+    \hline
+    S1& $9.7$\\
+    S2& $0.9$\\
+    S3& $-251.1$\\
+    \hline
+    L1& $31.9$\\
+    \hline
+    G1& $35.7$\\
+    \hline \hline
+  \end{tabular}
+  
+  \caption{Regret-minimization algorithm margin of victory against other algorithms.}
+  \label{tab:data}
+\end{table*}
+
+The results of the competition can be seen in Table~\ref{tab:data}.  Meta-strategy algorithms are labelled with M's, historical prediction with H's, frequency analysis with F's, static mixed strategies with S's, the reinforcement learning with an L, and the gambit technique with a G.  Note that negative margins of victory indicate that our algorithm was, on average, less successful than the opponent algorithm, and that small average margins of victory (below $100$) indicate that the algorithms primarily tie against each other, and would likely average out in the long term.
+
+Overall, it's quite clear from the data that this algorithm is not particularly competitive in Rock-Paper-Scissors.  It loses rather spectacularly to the meta-strategy algorithms and to the historical prediction algorithms.  While the regret minimization algorithm does typically beat frequency analysis algorithms, the victory is by a relatively small margin.  
+
+We suspect that the historical prediction algorithms perform so strongly against the regret minimization algorithm because our algorithm is prone to sequences of repeated action choice when it identifies a sizable regret in the recent past.  The historical prediction algorithms likely identify such sequences quickly and react accordingly, as a sequence of identical plays need not be particularly long before a historical prediction algorithm is simply attempting to match a those identical plays.
+
+The performance of meta-strategy algorithms against our algorithm is unsurprising, as such algorithms are employed by the most successful algorithms in public competitions \cite{rpscomp}.  Such meta-algorithms, which  choose the anticipated best algorithm from amongst a set of candidates, are extremely versatile.
+
+Of curious note is the regret minimization algorithm's performance against the static mixed-strategy algorithms.  The original regret minimization technique from which our algorithm is derived was intended for use as an approach for beating static mixed strategies.  The altered algorithm no longer out-competes such algorithms, instead tying or losing.  We suspect that the alterations we have made, needed to adapt to non-static strategies, have compromised the algorithm's performance against true static mixed strategies.  In particular, in exploring a limited depth of recent history to build a current regret prediction, the algorithm may be susceptible to short-term trends in opponent performance which, while meaningful against adaptive and logical opponents, limits the algorithm's accuracy against static mixed strategy algorithms by encouraging more erratic behavior \cite{noregrets}.  
 
 %Present the results of your experiments. Simply presenting the data is
 %insufficient! You need to analyze your results. What did you discover?
