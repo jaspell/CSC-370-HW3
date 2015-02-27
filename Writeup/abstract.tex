@@ -4,7 +4,7 @@
 
 \begin{abstract}
 
-The classic and simple game of Rock-Paper-Scissors, also known by Roshambo, is a cyclic, zero-sum two player game with an established and easy to determine Nash equilibrium.  However, players using the Nash equilibrium mixed strategy (random choices between each of the three moves) will, on average, always tie opponents.  Thus, it is advantageous for players to employ an adaptive strategy which searches for, and exploits, non-random strategies in its opponents.  We describe the creation of a regret-minimization algorithm to compete against opponent algorithms in Rock-Paper-Scissors.
+The classic and simple game of Rock-Paper-Scissors (RPS), also known by Roshambo, is a cyclic, zero-sum, two-player game with an established and easy-to-determine Nash equilibrium strategy.  However, players using the Nash equilibrium mixed strategy (for RPS, randomly-chosen moves) will, on average, always tie opponents. Further, Nash equilibrium strategies will only be optimal if one assumes the opponent is also employing this strategy. Thus, it is advantageous for players to employ an adaptive strategy which searches for, and exploits, non-random strategies in its opponents.  We describe the creation of a regret-minimization algorithm to compete against unknown opponent algorithms in RPS, which simultaneously try to exploit our own algorithm.  In order to do this, we study an existing algorithm designed for a fixed-strategy opponent, and adapt it for an adjusting-strategy opponent. We find that the resulting strategy adjustment process in our algorithm is not fast enough to outmatch most other established RPS dynamic strategies.
 
 \end{abstract}
 

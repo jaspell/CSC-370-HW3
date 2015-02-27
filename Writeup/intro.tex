@@ -8,7 +8,7 @@ Rock-Paper-Scissors (RPS) is a simple game played between two opponents.  Each r
 
 Succeeding in RPS is highly dependent on chance, as is obvious from a cyclic game with a small number of moves of equivalent value.  To avoid indistinguishable wins, algorithms are compared by their competitive performance over a large number of rounds -- for the purposes of this paper, $10000$.
 
-The Nash equilibrium is the balanced equilibrium of moves if both players play optimally, knowing the other player's strategy, and will not benefit from changing their strategy. For Rock-Paper-Scissors, the Nash equilibrium is a probabilistic balanced distribution of each of the three moves \cite{noregrets}.  The Nash equilibrium will, on average, tie every strategy.  Therefore, it is to our advantage to use a strategy that will optimize its play against non-random players.  
+The Nash equilibrium is the balanced equilibrium of moves if both players play optimally, knowing the other player's strategy, and will not benefit from changing their strategy. For RPS, the Nash equilibrium is a probabilistic balanced distribution of each of the three moves \cite{noregrets}.  In other words, moves will be chosen by each player at random.  The Nash equilibrium will, on average, result in a tie, and it is unfit for opponents using non-random strategies.  Therefore, it is to our advantage to develop a strategy that will optimize play against non-random opponents.
 
 \begin{figure}[ht]
 	\centering
@@ -19,7 +19,10 @@ The Nash equilibrium is the balanced equilibrium of moves if both players play o
 
 To improve performance against non-Nash algorithms, we can consider choices of moves in terms of regret.  Regret, in general, is the response to learning that, for a past decision, another choice would have resulted in a better outcome.  In application to games, regret can be applied in hindsight to evaluate the benefit of having made a different choice of action.  By determining the regret associated with past moves, a player can anticipate the regret associated with a given upcoming move.  In order to win, players naturally intend to minimize regret.  Regret minimization algorithms use this approach to choose the optimal choice at each step in order to anticipate, and therefore beat, the opponent's move.
 
-In this paper, we describe the creation of a regret-minimization algorithm to compete against computational opponents in Rock-Paper-Scissors.
+RPS strategies can be either fixed or dynamic. When we say "fixed strategy," we mean a mixed strategy which selects rock, paper and scissors according to pre-determined, invariable proportions of the time throughout play. For instance, we could employ the Nash equilibrium strategy ($\{ .33, .33, .33 \}$) as a fixed strategy in which rock, paper and scissors are each chosen $33\%$ of the time. Or, we could employ a fixed strategy of $\{ .25, .75, .00 \}$ so that rock is chosen $25\%$ of the time, paper is chosen $75\%$ of the time, and scissors is never chosen. Alternatively, we can design a dynamic strategy which adjusts over time in order to beat the perceived strategy of the opponent. For instance, a dynamic strategy could begin by employing the Nash equlibrium strategy. But, once the algorithm notices that the opponent only throws rock, it might adjust so that it only throws paper against the opponent, thereby winning $100\%$ of the time (after adjustment). Dynamic strategies will be expectedly more complicated for use against opponents whose own strategies are also dynamic.
+
+In this paper, we develop a dynamic Rock-Paper-Scissors strategy for play against other dynamic opponent strategies. We describe the adaptation of an existing regret-minimization algorithm designed for a fixed-strategy opponent, to compete against opponent algorithms.
+
 
 %In this section, you should introduce the reader to the problem you
 %are attempting to solve. For example, for the first project: describe
